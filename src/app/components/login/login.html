@@ -1,0 +1,21 @@
+<h2>Seed Air</h2>
+<form [formGroup]="loginForm">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Usuario</mat-label>
+    <input matInput formControlName="username">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Contraseña</mat-label>
+    <input matInput formControlName="password" type="password">
+  </mat-form-field>
+
+  <div class="actions-container">
+    <button mat-stroked-button color="primary" routerLink="/src/app/components/home/home.html">Registrar</button>
+    <button mat-flat-button color="primary" routerLink="/src/app/components/home/home.html"(click)="Login()">Ingresar</button>
+  </div>
+
+</form>
+
+
