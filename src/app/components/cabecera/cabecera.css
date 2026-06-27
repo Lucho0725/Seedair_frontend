@@ -1,0 +1,54 @@
+/* ==========================================================================
+   Estilos para la Cabecera (mat-toolbar)
+   ========================================================================== */
+.general {
+  background-color: #067506 !important; /* Negro profundo predominante */
+  color: #ffffff !important;           /* Texto blanco */
+  display: flex;
+  align-items: center;
+  padding: 2rem 2rem !important;
+  height: 64px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Título de la Base de Datos / Sistema */
+.general h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+/* Espaciador dinámico de Angular Material */
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* Enlaces de Navegación e Iconos (Home y Logout) */
+.general a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff !important;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.25s ease-in-out;
+}
+
+/* Efecto Hover interactivo: Círculo verde agrícola con icono blanco */
+.general a:hover {
+  background-color: #2e7d32 !important; /* Verde agrícola */
+  transform: scale(1.05);
+}
+
+/* Tamaño de los iconos de Angular Material */
+.general mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}

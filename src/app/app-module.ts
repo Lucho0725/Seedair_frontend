@@ -6,10 +6,13 @@ import { App } from './app';
 import { Login } from './components/login/login';
 import { MaterialModule } from './module/material/material-module';
 import { Home } from './components/home/home';
+import { Cabecera } from './components/cabecera/cabecera';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @NgModule({
-  declarations: [App, Login, Home],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, ReactiveFormsModule],
+  declarations: [App, Login, Home, Cabecera],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, ReactiveFormsModule, MatToolbarModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })
