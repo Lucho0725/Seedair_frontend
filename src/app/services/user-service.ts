@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserDTO } from '../models/userDTO';
-import { TokenDTO } from '../models/tokerDTO';
+import { TokenDTO } from '../models/tokenDTO';
 import { tap } from 'rxjs/internal/operators/tap';
 
 @Injectable({
@@ -34,6 +34,12 @@ export class UserService {
 
     getIdLogeado(){
         return localStorage.getItem("id");
+    }
+    getIdLogeadoInt(){
+      const currentIdLogueado = localStorage.getItem("id");
+      
+      return currentIdLogueado? parseInt(currentIdLogueado): 0;
+
     }
 
     getAuthoritiesLogeado(){
