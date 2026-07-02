@@ -1,0 +1,111 @@
+<div class="page-container">
+    <div class="header-row">
+        <div class="title-section">
+            <h2>Mis Reservas</h2>
+            <p class="subtitle">Administra tus servicios de drones pendientes, historial y cancelaciones.</p>
+        </div>
+        
+        <button mat-flat-button color="primary" routerLink="/reservations/save-reservation">
+            <mat-icon>flight_takeoff</mat-icon>
+            Nueva Reserva
+        </button>
+    </div>
+
+    <mat-tab-group (selectedTabChange)="cambiarPestana($event)" animationDuration="0ms">
+        <mat-tab label="Pendiente"></mat-tab>
+        <mat-tab label="Finalizado"></mat-tab>
+        <mat-tab label="Cancelado"></mat-tab>
+    </mat-tab-group>
+
+    <br>
+
+    <div class="search-row">
+        <mat-form-field appearance="outline" class="search-box">
+            <mat-label>Buscar por Parcela...</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ubicación" #input>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    </div>
+
+    <div class="table-container">
+        <table mat-table [dataSource]="dsListaReservas" class="mat-elevation-z2">
+
+            <ng-container matColumnDef="parcelLocation">
+                <th mat-header-cell *matHeaderCellDef> Parcela </th>
+                <td mat-cell *matCellDef="let element"> <b>{{element.parcelLocation}}</b> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechas">
+                <th mat-header-cell *matHeaderCellDef> Fechas de Servicio </th>
+                <td mat-cell *matCellDef="let element"> 
+                    {{element.scheduledStartDate | date:'dd/MM/yyyy'}} - {{element.scheduledEndDate | date:'dd/MM/yyyy'}} 
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="droneModel">
+                <th mat-header-cell *matHeaderCellDef> Dron </th>
+                <td mat-cell *matCellDef="let element"> {{element.droneModel}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="hectares">
+                <th mat-header-cell *matHeaderCellDef> Área (Hectáreas) </th>
+                <td mat-cell *matCellDef="let element"> {{element.hectares}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="totalAmount">
+                <th mat-header-cell *matHeaderCellDef> Total </th>
+                <td mat-cell *matCellDef="let element"> S/ {{element.totalAmount | number:'1.2-2'}} </td>
+            </ng-container>
+
+             <ng-container matColumnDef="reviewRating">
+                <th mat-header-cell *matHeaderCellDef> Mi Reseña </th>
+                <td mat-cell *matCellDef="let element">
+        
+                <ng-container *ngIf="element.reviewRating">
+                    <ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+                        <mat-icon *ngIf="i <= element.reviewRating" style="color:rgb(167, 212, 4)">star</mat-icon>
+                    </ng-container> 
+                </ng-container>
+                <button *ngIf="!element.reviewRating"><span style="color: #999; font-size: 0.85rem; font-style: italic;">
+                    Dejar reseña
+                </span></button>
+                
+                
+                
+
+                
+
+    </td>
+            </ng-container>
+
+            <ng-container matColumnDef="opciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element"> 
+                    
+                    <!--<button *ngIf="!element.paymentId && element.state === 'PENDIENTE'
+                            "mat-stroked-button color="primary" 
+                            (click)="Pagar(element.id)">
+                        <mat-icon>payment</mat-icon> Pagar
+                    </button>
+
+                    <button *ngIf="element.state === 'PENDIENTE'" 
+                            mat-icon-button color="warn" 
+                            matTooltip="Cancelar Reserva"
+                            (click)="CancelarReserva(element.id)">
+                        <mat-icon>cancel</mat-icon>
+                    </button>-->
+
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell empty-state" colspan="6" style="text-align: center; padding: 2rem;">
+                    No se encontraron reservas que coincidan.
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

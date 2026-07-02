@@ -1,0 +1,87 @@
+<div class="page-container">
+    <div class="header-row">
+        <div class="title-section">
+            <h2>Crear Nueva Reserva</h2>
+            <p class="subtitle">Selecciona tu parcela, el equipo y las fechas para el servicio SeedAir.</p>
+        </div>
+    </div>
+
+    <mat-card class="form-card mat-elevation-z3">
+        <mat-card-content>
+            <form [formGroup]="reservationForm" (ngSubmit)="registrarReserva()">
+                
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Parcela</mat-label>
+                    <mat-select formControlName="parcelId">
+                        <mat-option *ngFor="let parcel of misParcelas" [value]="parcel.id">
+                            {{ parcel.locationText }} ({{ parcel.totalHectares }} hectáreas)
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="reservationForm.get('parcelId')?.hasError('required')">
+                        La parcela es obligatoria.
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="row-fields">
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>Dron</mat-label>
+                        <mat-select formControlName="droneId">
+                            <mat-option *ngFor="let drone of dronesDisponibles" [value]="drone.id">
+                                {{ drone.modelName }} (Capacidad: {{ drone.seedCapacityKg }}kg)
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="reservationForm.get('droneId')?.hasError('required')">
+                            Debes seleccionar un dron.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>Operador de dron</mat-label>
+                        <mat-select formControlName="operatorId">
+                            <mat-option *ngFor="let op of operadoresDisponibles" [value]="op.id">
+                                {{ op.licenseCode }} ({{ op.certificationLevel }})
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="reservationForm.get('operatorId')?.hasError('required')">
+                            Debes seleccionar un operador.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="row-fields">
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>Fecha de Inicio</mat-label>
+                        <input matInput [matDatepicker]="startPicker" formControlName="scheduledStartDate">
+                        <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #startPicker></mat-datepicker>
+                        
+                        <mat-error *ngIf="reservationForm.get('scheduledStartDate')?.hasError('required')">
+                            La fecha es obligatoria.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>Fecha de Fin</mat-label>
+                        <input matInput [matDatepicker]="endPicker" formControlName="scheduledEndDate">
+                        <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #endPicker></mat-datepicker>
+                        
+                        <mat-error *ngIf="reservationForm.get('scheduledEndDate')?.hasError('required')">
+                            La fecha es obligatoria.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="actions-row">
+                    <button mat-stroked-button color="warn" type="button" routerLink="/reservations/list-customer-reservations">
+                        Cancelar
+                    </button>
+                    <button mat-flat-button color="primary" type="submit" [disabled]="reservationForm.invalid">
+                        Confirmar Reserva
+                    </button>
+                </div>
+                
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
