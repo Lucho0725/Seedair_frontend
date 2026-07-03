@@ -1,10 +1,36 @@
 <mat-toolbar class="general">
-    <h1><b> Seed Air</b></h1>
-    <span class="example-spacer"></span>
-    
-    <a style="cursor: pointer;" routerLink="/home" style="color: white;"><mat-icon>home</mat-icon></a>
-    <a style="cursor: pointer;" routerLink="/login" style="color: white;"><mat-icon>login</mat-icon></a>
-    <a style="cursor: pointer;" (click)="Logout()"><mat-icon>logout</mat-icon></a>
+  
+  <div class="header-logo" routerLink="/home">
+    <span class="logo-title">Seed Air</span>
+  </div>
 
+  <div class="header-nav">
+    <a routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+    <a routerLink="/services" routerLinkActive="active-link">Servicios</a>
+    <a routerLink="/how-it-works" routerLinkActive="active-link">Cómo funciona</a>
+    <a routerLink="/about-us" routerLinkActive="active-link">Nosotros</a>
+    <a routerLink="/menu" routerLinkActive="active-link">Menú</a>
+  </div>
+
+  <span class="example-spacer"></span>
+
+  <div class="header-actions">
+    
+    <a *ngIf="!isLoggedIn" routerLink="/login" class="btn-login" routerLinkActive="active-link">
+      Login
+    </a>
+    
+    <a *ngIf="isLoggedIn" routerLink="/profile" class="btn-user-icon" title="Mi Perfil">
+      <mat-icon>account_circle</mat-icon> </a>
+    
+    <button class="btn-request" routerLink="/services/request">
+      Solicitar servicio
+    </button>
+    
+    <a *ngIf="isLoggedIn" (click)="Logout()" class="btn-logout-icon" title="Cerrar Sesión">
+      <mat-icon>logout</mat-icon>
+    </a>
+    
+  </div>
 
 </mat-toolbar>

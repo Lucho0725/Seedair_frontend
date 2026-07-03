@@ -70,8 +70,8 @@ export class SaveReservation{
     const formValues = this.reservationForm.value;
 
     
-    const startDateFormateada = new Date(formValues.scheduledStartDate).toString().split('T')[0];
-    const endDateFormateada = new Date(formValues.scheduledEndDate).toString().split('T')[0];
+    const startDateFormateada = new Date(formValues.scheduledStartDate).toISOString().split('T')[0];
+const endDateFormateada = new Date(formValues.scheduledEndDate).toISOString().split('T')[0];
 
     
     const reservationDTOregister  = {
