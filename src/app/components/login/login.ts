@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserDTO } from '../../models/userDTO';
-import { TokenDTO } from '../../models/tokerDTO';
+import { TokenDTO } from '../../models/tokenDTO';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UserService } from '../../services/user-services';
+import { UserService } from '../../services/user-service';
 
 
 @Component({

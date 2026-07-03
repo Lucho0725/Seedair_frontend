@@ -1,0 +1,78 @@
+<div class="page-container">
+    
+    <div class="header-row">
+        <div class="title-section">
+            <h2>Lista de Mis Parcelas</h2>
+            <p class="subtitle">Administra las parcelas registradas para el monitoreo mediante drones.</p>
+        </div>
+        
+        <button mat-flat-button color="primary" routerLink="/parcels/save-parcel">
+            <mat-icon>add</mat-icon>
+            Nueva Parcela
+        </button>
+    </div>
+
+    <div class="search-row">
+        <mat-form-field appearance="outline" class="search-box">
+            <mat-label>Buscar parcela por ubicación</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ubicación..." #input>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    </div>
+
+    <div class="table-container">
+        <table mat-table [dataSource]="dsListaParcelas" class="mat-elevation-z2">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="locationText">
+                <th mat-header-cell *matHeaderCellDef> Ubicación </th>
+                <td mat-cell *matCellDef="let element"> {{element.locationText}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="totalHectares">
+                <th mat-header-cell *matHeaderCellDef> Hectáreas </th>
+                <td mat-cell *matCellDef="let element"> {{element.totalHectares}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="latitude">
+                <th mat-header-cell *matHeaderCellDef> Latitud </th>
+                <td mat-cell *matCellDef="let element"> {{element.latitude}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="longitude">
+                <th mat-header-cell *matHeaderCellDef> Longitud </th>
+                <td mat-cell *matCellDef="let element"> {{element.longitude}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="createdAt">
+                <th mat-header-cell *matHeaderCellDef> Fecha de Registro </th>
+                <td mat-cell *matCellDef="let element"> {{element.createdAt | date:'dd/MM/yyyy'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="opciones">
+                <th mat-header-cell *matHeaderCellDef> Opciones </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <button mat-icon-button color="primary" routerLink="/parcels/save-parcel/{{element.id}}">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="Eliminar(element.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell empty-state" colspan="7">
+                    No se encontraron parcelas que coincidan con "{{input.value}}"
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

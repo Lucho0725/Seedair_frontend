@@ -1,0 +1,49 @@
+.page-container {
+    padding: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.title-section h2 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+}
+
+.subtitle {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+
+.search-row {
+    margin-bottom: 16px;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 350px;
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+    .header-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+}

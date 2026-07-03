@@ -1,0 +1,128 @@
+.page-container {
+    padding: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    gap: 20px;
+}
+
+.title-section h2 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+}
+
+.subtitle {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+mat-tab-group {
+    margin-bottom: 20px;
+}
+
+.search-row {
+    margin-bottom: 18px;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 360px;
+}
+
+.table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    min-width: 1050px;
+}
+
+.mat-mdc-header-cell {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+    white-space: nowrap;
+}
+
+.mat-mdc-cell {
+    font-size: 14px;
+    color: #444;
+    padding: 16px 14px;
+    vertical-align: middle;
+}
+
+.mat-mdc-row:hover {
+    background: #fafafa;
+}
+
+.mat-column-opciones {
+    width: 90px;
+    text-align: center;
+}
+
+.mat-column-totalAmount {
+    width: 130px;
+}
+
+.mat-column-hectares {
+    width: 130px;
+}
+
+.mat-column-droneModel {
+    width: 180px;
+}
+
+.mat-column-fechas {
+    width: 240px;
+}
+
+.mat-column-parcelLocation {
+    min-width: 220px;
+}
+
+.mat-column-reviewRating {
+    min-width: 170px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2.5rem;
+    color: #777;
+    font-style: italic;
+}
+
+@media screen and (max-width: 600px) {
+
+    .page-container {
+        padding: 16px;
+    }
+
+    .header-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .header-row button {
+        width: 100%;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    table {
+        min-width: 900px;
+    }
+}
