@@ -7,11 +7,18 @@ import { SaveParcel } from './components/parcels/save-parcel/save-parcel';
 import { consultarGuard } from './components/guards/consultar-guard';
 import { SaveReservation } from './components/reservations/save-reservation/save-reservation';
 import { ListCustomerReservations } from './components/reservations/list-customer-reservations/list-customer-reservations';
-
+import { MainLayout } from './components/main-layout/main-layout';
 
 const routes: Routes = [
   {path:"", component:Login},
   {path:"login", component:Login},  
+  
+  {
+    path: "",
+    component: MainLayout,
+    // El Guard general aquí protege a todas las rutas hijas de un solo golpe
+    canActivate: [consultarGuard], 
+    children: [
   {path:"home", component:Home, canActivate:[consultarGuard]},
   {path:"parcels/list-parcels", component: ListParcels, canActivate:[consultarGuard]},
   {path:"parcels/save-parcel", component: SaveParcel, canActivate:[consultarGuard]},  
@@ -19,6 +26,9 @@ const routes: Routes = [
   {path:"reservations/list-customer-reservations", component: ListCustomerReservations, canActivate:[consultarGuard]},
   {path:"reservations/save-reservation", component: SaveReservation, canActivate:[consultarGuard]},  
   
+  ]
+  },
+  { path: "**", redirectTo: "login" }
 ];
 
 @NgModule({

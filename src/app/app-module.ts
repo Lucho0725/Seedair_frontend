@@ -15,6 +15,8 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { autorizacionInterceptor } from './components/interceptors/autorizacion-interceptor';
 import { ListCustomerReservations } from './components/reservations/list-customer-reservations/list-customer-reservations';
 import { SaveReservation } from './components/reservations/save-reservation/save-reservation';
+import { MainLayout } from './components/main-layout/main-layout';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { SaveReservation } from './components/reservations/save-reservation/save
     SaveParcel,
     ListCustomerReservations,
     SaveReservation,
+    MainLayout,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { SaveReservation } from './components/reservations/save-reservation/save
     ReactiveFormsModule,
     MatToolbarModule,
     HttpClientModule,
+    RouterModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
