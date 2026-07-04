@@ -44,12 +44,7 @@ export class ListCustomerReservations{
   ) {}
 
   ngOnInit(): void {
-    const currentUserId = this.userService.getIdLogeadoInt();
-    this.customerService.getCustomerIdByUserId(currentUserId).subscribe({
-      next:(currentCustomerId)=>{
-        this.CargaLista(currentCustomerId);
-      }
-    })
+    this.CargaLista();
 
     
   }
@@ -74,8 +69,8 @@ export class ListCustomerReservations{
     this.filtrarPorEstado();
   }
 
-  CargaLista(customerId: number) {
-    this.reservationService.listByCustomerId(customerId)
+  CargaLista() {
+    this.reservationService.listByCustomer()
       .subscribe({
         next: (data: ReservationDTOByCustomer[]) => {
           this.todasLasReservas = data;

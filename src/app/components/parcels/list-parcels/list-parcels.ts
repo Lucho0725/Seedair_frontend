@@ -30,13 +30,7 @@ export class ListParcels{
   ngOnInit(){
     
 
-    const currentUserId = this.userService.getIdLogeadoInt();
-
-    this.customerService.getCustomerIdByUserId(currentUserId).subscribe({
-      next:(customerId)=>{
-        this.CargaLista(customerId);
-      }
-    })
+    this,this.CargaLista();
     
     this.dsListaParcelas.filter = '';
   }
@@ -57,16 +51,7 @@ export class ListParcels{
             next: () => {
               this.snackBar.open("Se eliminó la Parcela con Id:" + id.toString(), "", {duration: 1000});
 
-              //Para dalr tiempos a la base de datos para actualziarse (buena practica)
-              setTimeout(() => {            
-                const currentUserId = this.userService.getIdLogeadoInt();
-
-                this.customerService.getCustomerIdByUserId(currentUserId).subscribe({
-                  next:(customerId)=>{
-                    this.CargaLista(customerId);
-                  }
-                })
-            }, 150);
+              this.CargaLista();
               
             },
             error: (err) => {
@@ -79,8 +64,8 @@ export class ListParcels{
     
   }
 
-  CargaLista(customerId: number){
-    this.parcelService.listParcelsByCustomerId(customerId).subscribe({
+  CargaLista(){
+    this.parcelService.listParcelsByCustomer().subscribe({
       next: (data: ParcelDTOByCustomerId[]) => {
           this.dsListaParcelas.data = data;
           this.dsListaParcelas.filter = '';

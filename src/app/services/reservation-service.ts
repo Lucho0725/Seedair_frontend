@@ -16,6 +16,9 @@ export class ReservationService {
   listByCustomerId(id: number) {
     return this.http.get<ReservationDTOByCustomer[]>(this.ruta_servidor + "/" + this.recurso + "/list/" + id);
   }
+  listByCustomer() {
+    return this.http.get<ReservationDTOByCustomer[]>(this.ruta_servidor + "/" + this.recurso + "/list" + "/customerReservations");
+  }
 
   registerReservation(reservationDTO: ReservationDTORegister) {
     return this.http.post<ReservationDTORegister>(this.ruta_servidor + "/" + this.recurso + "/register", reservationDTO);
