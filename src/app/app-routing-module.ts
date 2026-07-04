@@ -7,17 +7,21 @@ import { SaveParcel } from './components/parcels/save-parcel/save-parcel';
 import { consultarGuard } from './components/guards/consultar-guard';
 import { SaveReservation } from './components/reservations/save-reservation/save-reservation';
 import { ListCustomerReservations } from './components/reservations/list-customer-reservations/list-customer-reservations';
+import { RegisterCustomerForm } from './components/register-customer-form/register-customer-form';
 
 
 const routes: Routes = [
   {path:"", component:Login},
-  {path:"login", component:Login},  
+  {path:"login", component:Login},
+  {path:"register-customer-form", component: RegisterCustomerForm},  
+  
   {path:"home", component:Home, canActivate:[consultarGuard]},
   {path:"parcels/list-parcels", component: ListParcels, canActivate:[consultarGuard]},
   {path:"parcels/save-parcel", component: SaveParcel, canActivate:[consultarGuard]},  
   {path:"parcels/save-parcel/:id", component: SaveParcel, canActivate:[consultarGuard]},
   {path:"reservations/list-customer-reservations", component: ListCustomerReservations, canActivate:[consultarGuard]},
-  {path:"reservations/save-reservation", component: SaveReservation, canActivate:[consultarGuard]},  
+  {path:"reservations/save-reservation", component: SaveReservation, canActivate:[consultarGuard]}, 
+  
   
 ];
 

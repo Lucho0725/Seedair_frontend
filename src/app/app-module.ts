@@ -15,6 +15,7 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { autorizacionInterceptor } from './components/interceptors/autorizacion-interceptor';
 import { ListCustomerReservations } from './components/reservations/list-customer-reservations/list-customer-reservations';
 import { SaveReservation } from './components/reservations/save-reservation/save-reservation';
+import { RegisterCustomerForm } from './components/register-customer-form/register-customer-form';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SaveReservation } from './components/reservations/save-reservation/save
     SaveParcel,
     ListCustomerReservations,
     SaveReservation,
+    RegisterCustomerForm,
   ],
   imports: [
     BrowserModule,

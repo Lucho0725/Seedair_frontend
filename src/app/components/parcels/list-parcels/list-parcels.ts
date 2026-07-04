@@ -6,6 +6,7 @@ import { ConfirmacionEliminar } from '../../confirmaciones/confirmacion-eliminar
 import { ParcelDTOByCustomerId } from '../../../models/parcelDTOByCustomerId';
 import { ParcelService } from '../../../services/parcel-service';
 import { UserService } from '../../../services/user-service';
+import { CustomerService } from '../../../services/customer-service';
 
 @Component({
   selector: 'app-list-parcels',
@@ -19,6 +20,7 @@ export class ListParcels{
 
   constructor (
     private userService: UserService,
+    private customerService: CustomerService,
     private parcelService: ParcelService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog
@@ -27,9 +29,15 @@ export class ListParcels{
 
   ngOnInit(){
     
-    const currentCustomerId = this.userService.getIdLogeadoInt();
+
+    const currentUserId = this.userService.getIdLogeadoInt();
+
+    this.customerService.getCustomerIdByUserId(currentUserId).subscribe({
+      next:(customerId)=>{
+        this.CargaLista(customerId);
+      }
+    })
     
-    this.CargaLista(currentCustomerId);
     this.dsListaParcelas.filter = '';
   }
   
@@ -51,8 +59,13 @@ export class ListParcels{
 
               //Para dalr tiempos a la base de datos para actualziarse (buena practica)
               setTimeout(() => {            
-                const currentCustomerId = this.userService.getIdLogeadoInt();
-                this.CargaLista(currentCustomerId); 
+                const currentUserId = this.userService.getIdLogeadoInt();
+
+                this.customerService.getCustomerIdByUserId(currentUserId).subscribe({
+                  next:(customerId)=>{
+                    this.CargaLista(customerId);
+                  }
+                })
             }, 150);
               
             },

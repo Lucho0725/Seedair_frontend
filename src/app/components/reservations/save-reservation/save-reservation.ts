@@ -7,6 +7,7 @@ import { OperatorService } from '../../../services/operator-service';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CustomerService } from '../../../services/customer-service';
 
 @Component({
   selector: 'app-save-reservation',
@@ -24,6 +25,7 @@ export class SaveReservation{
 
   constructor(
     private fb: FormBuilder,
+    private customerService: CustomerService,
     private reservationService: ReservationService,
     private parcelService: ParcelService,
     private droneService: DroneService,
@@ -46,19 +48,24 @@ export class SaveReservation{
   }
 
   cargarDatosDesplegables(): void {
-    const currentCustomerId = this.userService.getIdLogeadoInt(); 
+    const currentUserId = this.userService.getIdLogeadoInt();
+    this.customerService.getCustomerIdByUserId(currentUserId).subscribe({
+      next:(currentCustomerId)=>{
+            
+        this.parcelService.listParcelsByCustomerId(currentCustomerId).subscribe(data => {
+          this.misParcelas = data;
+        });
 
-    this.parcelService.listParcelsByCustomerId(currentCustomerId).subscribe(data => {
-      this.misParcelas = data;
-    });
+        this.operatorService.listAvailable().subscribe(data => {
+          this.operadoresDisponibles = data;
+        });
+        
+        this.droneService.listActive().subscribe(data => {
+          this.dronesDisponibles = data;
+        });
+      }
+    })
 
-    this.operatorService.listAvailable().subscribe(data => {
-      this.operadoresDisponibles = data;
-    });
-    
-    this.droneService.listActive().subscribe(data => {
-      this.dronesDisponibles = data;
-    });
   }
 
   registrarReserva(): void {
