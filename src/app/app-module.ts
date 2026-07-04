@@ -15,6 +15,8 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { autorizacionInterceptor } from './components/interceptors/autorizacion-interceptor';
 import { ListCustomerReservations } from './components/reservations/list-customer-reservations/list-customer-reservations';
 import { SaveReservation } from './components/reservations/save-reservation/save-reservation';
+import { HomeAdmin } from './components/home/home-admin/home-admin';
+import { HomeCustomer } from './components/home/home-customer/home-customer';
 
 import { RegisterCustomerForm } from './components/register-customer-form/register-customer-form';
 
@@ -35,13 +37,12 @@ import { SaveDrone } from './components/drone/save-drone/save-drone';
     SaveParcel,
     ListCustomerReservations,
     SaveReservation,
-
     RegisterCustomerForm,
-
     MainLayout,
     ListDrone,
     SaveDrone,
-
+    HomeAdmin,
+    HomeCustomer,
   ],
   imports: [
     BrowserModule,
