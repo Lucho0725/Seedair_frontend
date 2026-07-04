@@ -8,6 +8,7 @@ import { consultarGuard } from './components/guards/consultar-guard';
 import { SaveReservation } from './components/reservations/save-reservation/save-reservation';
 import { ListCustomerReservations } from './components/reservations/list-customer-reservations/list-customer-reservations';
 import { MainLayout } from './components/main-layout/main-layout';
+import { ListDrone } from './components/drone/list-drone/list-drone';
 
 const routes: Routes = [
   {path:"", component:Login},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path:"parcels/save-parcel", component: SaveParcel, canActivate:[consultarGuard]},  
   {path:"parcels/save-parcel/:id", component: SaveParcel, canActivate:[consultarGuard]},
   {path:"reservations/list-customer-reservations", component: ListCustomerReservations, canActivate:[consultarGuard]},
-  {path:"reservations/save-reservation", component: SaveReservation, canActivate:[consultarGuard]},  
+  {path:"reservations/save-reservation", component: SaveReservation, canActivate:[consultarGuard]},
+  {path:"drone/list-drone", component: ListDrone, canActivate:[consultarGuard]},
   
   ]
   },

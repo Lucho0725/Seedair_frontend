@@ -17,6 +17,8 @@ import { ListCustomerReservations } from './components/reservations/list-custome
 import { SaveReservation } from './components/reservations/save-reservation/save-reservation';
 import { MainLayout } from './components/main-layout/main-layout';
 import { RouterModule } from '@angular/router';
+import { ListDrone } from './components/drone/list-drone/list-drone';
+import { SaveDrone } from './components/drone/save-drone/save-drone';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { RouterModule } from '@angular/router';
     ListCustomerReservations,
     SaveReservation,
     MainLayout,
+    ListDrone,
+    SaveDrone,
   ],
   imports: [
     BrowserModule,
