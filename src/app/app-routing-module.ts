@@ -14,7 +14,8 @@ const routes: Routes = [
   
   {path:"", component:Login},
   {path:"login", component:Login},
-  {path:"register-customer-form", component: RegisterCustomerForm},  
+  {path:"register-customer-form", component: RegisterCustomerForm},
+  
     
   {
     path: "",

@@ -1,49 +1,52 @@
-/* Contenedor principal para centrar la tarjeta de login en la pantalla */
 :host {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 80vh; /* Centra verticalmente en el espacio disponible */
+  min-height: 80vh; 
   font-family: 'Roboto', sans-serif;
+  
+  background-color: #f8f9fa; 
 }
 
-/* Estilo para el formulario (actúa como una tarjeta contenedora) */
+
+h2 {
+  text-align: center;
+  color: #3f51b5; 
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem; 
+  font-weight: bold;
+}
+
+
 form {
   background-color: #ffffff;
   padding: 2.5rem;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 380px; /* Evita que el formulario se estire demasiado */
+  max-width: 380px; 
   display: flex;
-  flex-direction: column; /* Alinea los elementos uno debajo de otro */
+  flex-direction: column; 
 }
 
-/* Título del proyecto (puedes moverlo dentro del form si prefieres que esté en la tarjeta) */
-h2 {
-  text-align: center;
-  color: #3f51b5; /* Color primario típico de Angular Material */
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  font-weight: 500;
-}
-
-/* Hace que los campos de Angular Material ocupen todo el ancho disponible */
 mat-form-field {
   width: 100%;
   margin-bottom: 0.5rem;
 }
 
-/* Contenedor opcional para los botones (para alinearlos lado a lado si lo deseas) */
 .actions-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem; 
+  width: 100%; 
 }
 
-/* Estilo base para los botones si quieres asegurar que tengan buen tamaño */
 button {
-  flex: 1; /* Hace que ambos botones tengan exactamente el mismo tamaño */
-  padding: 0.5rem 1rem;
+  width: 100%; 
+  padding: 0.8rem 1rem; 
+  font-size: 1rem;
+ 
+  border-radius: 4px; 
 }
