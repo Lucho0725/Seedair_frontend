@@ -8,6 +8,7 @@ import { ReservationService } from '../../../services/reservation-service';
 import { UserService } from '../../../services/user-service';
 import { ConfirmacionEliminar } from '../../confirmaciones/confirmacion-eliminar/confirmacion-eliminar';
 import { ReservationDTOByCustomer } from '../../../models/reservationDTOByCustomer';
+import { CustomerService } from '../../../services/customer-service';
 
 @Component({
   selector: 'app-list-reservations',
@@ -36,14 +37,16 @@ export class ListCustomerReservations{
 
   constructor(
     private reservationService: ReservationService,
+    private customerService: CustomerService,
     private userService: UserService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    const currentCustomerId = this.userService.getIdLogeadoInt();
-    this.CargaLista(currentCustomerId);
+    this.CargaLista();
+
+    
   }
 
   applyFilter(event: Event) {
@@ -66,8 +69,8 @@ export class ListCustomerReservations{
     this.filtrarPorEstado();
   }
 
-  CargaLista(customerId: number) {
-    this.reservationService.listByCustomerId(customerId)
+  CargaLista() {
+    this.reservationService.listByCustomer()
       .subscribe({
         next: (data: ReservationDTOByCustomer[]) => {
           this.todasLasReservas = data;

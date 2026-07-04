@@ -16,9 +16,12 @@ export class ParcelService {
   listParcelsByCustomerId(id: number){
     return this.http.get<ParcelDTOByCustomerId[]>(this.ruta_servidor+"/"+this.recurso+"/list/"+id);
   }
+  listParcelsByCustomer(){
+    return this.http.get<ParcelDTOByCustomerId[]>(this.ruta_servidor+"/"+this.recurso+"/list"+"/customerParcels");
+  }
 
-  getById(id: number){    
-    return this.http.get<ParcelDTOByCustomerId>(this.ruta_servidor + "/" + this.recurso + "/getById/" + id.toString());
+  getById(parcelId: number){    
+    return this.http.get<ParcelDTOByCustomerId>(this.ruta_servidor + "/" + this.recurso + "/getById/" + parcelId);
   }
 
   add(parcel: Parcel){

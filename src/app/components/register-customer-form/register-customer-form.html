@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-card class="form-card">
+    
+    <h2 class="title">Seed Air</h2>
+    <p class="subtitle">Crea tu cuenta como cliente</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombres</mat-label>
+          <input matInput formControlName="firstName" placeholder="Ej. Juan">
+          <mat-error *ngIf="registerForm.get('firstName')?.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="lastName" placeholder="Ej. Pérez">
+          <mat-error *ngIf="registerForm.get('lastName')?.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Celular</mat-label>
+        <input matInput formControlName="phone" placeholder="Ej. 987654321">
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-error *ngIf="registerForm.get('phone')?.hasError('required')">Requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="username" placeholder="juanperez">
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="registerForm.get('username')?.hasError('required')">Requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="passwordVisibility ? 'text' : 'password'" formControlName="password">
+        <button mat-icon-button matSuffix (click)="passwordVisibility = !passwordVisibility" type="button">
+          <mat-icon>{{passwordVisibility ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Requerida</mat-error>
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-stroked-button color="primary" (click)="goBack()">Cancelar</button>
+        <button mat-flat-button color="primary" [disabled]="registerForm.invalid">Registrar</button>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

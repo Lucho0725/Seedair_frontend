@@ -6,6 +6,7 @@ import { ConfirmacionEliminar } from '../../confirmaciones/confirmacion-eliminar
 import { ParcelDTOByCustomerId } from '../../../models/parcelDTOByCustomerId';
 import { ParcelService } from '../../../services/parcel-service';
 import { UserService } from '../../../services/user-service';
+import { CustomerService } from '../../../services/customer-service';
 
 @Component({
   selector: 'app-list-parcels',
@@ -19,6 +20,7 @@ export class ListParcels{
 
   constructor (
     private userService: UserService,
+    private customerService: CustomerService,
     private parcelService: ParcelService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog
@@ -27,9 +29,9 @@ export class ListParcels{
 
   ngOnInit(){
     
-    const currentCustomerId = this.userService.getIdLogeadoInt();
+
+    this,this.CargaLista();
     
-    this.CargaLista(currentCustomerId);
     this.dsListaParcelas.filter = '';
   }
   
@@ -49,11 +51,7 @@ export class ListParcels{
             next: () => {
               this.snackBar.open("Se eliminó la Parcela con Id:" + id.toString(), "", {duration: 1000});
 
-              //Para dalr tiempos a la base de datos para actualziarse (buena practica)
-              setTimeout(() => {            
-                const currentCustomerId = this.userService.getIdLogeadoInt();
-                this.CargaLista(currentCustomerId); 
-            }, 150);
+              this.CargaLista();
               
             },
             error: (err) => {
@@ -66,8 +64,8 @@ export class ListParcels{
     
   }
 
-  CargaLista(customerId: number){
-    this.parcelService.listParcelsByCustomerId(customerId).subscribe({
+  CargaLista(){
+    this.parcelService.listParcelsByCustomer().subscribe({
       next: (data: ParcelDTOByCustomerId[]) => {
           this.dsListaParcelas.data = data;
           this.dsListaParcelas.filter = '';

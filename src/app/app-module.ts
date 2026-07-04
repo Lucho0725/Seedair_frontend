@@ -15,10 +15,14 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { autorizacionInterceptor } from './components/interceptors/autorizacion-interceptor';
 import { ListCustomerReservations } from './components/reservations/list-customer-reservations/list-customer-reservations';
 import { SaveReservation } from './components/reservations/save-reservation/save-reservation';
+
+import { RegisterCustomerForm } from './components/register-customer-form/register-customer-form';
+
 import { MainLayout } from './components/main-layout/main-layout';
 import { RouterModule } from '@angular/router';
 import { ListDrone } from './components/drone/list-drone/list-drone';
 import { SaveDrone } from './components/drone/save-drone/save-drone';
+
 
 @NgModule({
   declarations: [
@@ -31,9 +35,13 @@ import { SaveDrone } from './components/drone/save-drone/save-drone';
     SaveParcel,
     ListCustomerReservations,
     SaveReservation,
+
+    RegisterCustomerForm,
+
     MainLayout,
     ListDrone,
     SaveDrone,
+
   ],
   imports: [
     BrowserModule,
