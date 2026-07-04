@@ -1,0 +1,182 @@
+/* ==========================================================================
+   Contenedor Base del Componente (Flujo vertical natural)
+   ========================================================================== */
+:host {
+  display: block; 
+  padding: 0 2rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fafafa;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   Título Principal
+   ========================================================================== */
+h1 {
+  color: #111111;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 1rem 0 0.5rem 0;
+  letter-spacing: -0.5px;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #2e7d32; /* Verde Agrícola */
+  margin: 0.75rem auto 0 auto;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   Sección de Presentación con tu Imagen de Fondo (Hero Section)
+   ========================================================================== */
+.welcome-presentation {
+  text-align: center;
+  padding: 20rem 2rem; /* Aumentamos el padding vertical para que la imagen sea más alta y se aprecie mejor */
+  position: relative;
+
+  /* --- Cambios clave para agrandar el fondo de la imagen --- */
+  width: 100vw; /* Fuerza a que mida el 100% del ancho de la pantalla visible */
+  margin-left: calc(-50vw + 50%); /* Centra el elemento rompiendo el contenedor del host */
+  margin-right: calc(-50vw + 50%);
+  margin-bottom: 4rem; /* Espaciado con respecto a las tarjetas de abajo */
+  border-radius: 0px; /* Al ser de borde a borde, se ve más limpio sin esquinas redondeadas */
+
+  /* Tu imagen y overlay (Se mantienen) */
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.75)), 
+    url('https://dronesafra.com.br/wp-content/uploads/2024/10/pulverizacao-aerea-com-drones-inovacao-no-campo-em-2023.jpg'); 
+  background-size: cover;       
+  background-position: center;   
+  background-repeat: no-repeat;
+}
+
+/* ==========================================================================
+   Tipografías de la Presentación (Optimizadas para Blanco sobre tu imagen)
+   ========================================================================== */
+.welcome-presentation h1 {
+  color: #ffffff !important; /* Blanco puro */
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto protectora */
+}
+
+/* Línea decorativa verde brillante debajo del título */
+.welcome-presentation h1::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #4caf50; /* Verde brillante que destaca en el fondo oscuro */
+  margin: 0.75rem auto 0 auto;
+  border-radius: 2px;
+}
+
+.welcome-presentation h2 {
+  color: #f5f5f5; /* Blanco humo muy limpio */
+  font-size: 1.65rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.welcome-presentation h4 {
+  color: #e0e0e0; /* Gris claro de lectura suave */
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 750px; /* Limita el ancho del texto para que no se estire demasiado horizontalmente */
+  margin: 0 auto;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   NUEVO: Rejilla Exclusiva para las Tarjetas
+   ========================================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Media Queries para comportamiento responsivo de las tarjetas */
+@media (min-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==========================================================================
+   Diseño de las Tarjetas (Se mantiene intacto)
+   ========================================================================== */
+.example-card {
+  background-color: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.example-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+  border-color: #2e7d32 !important;
+}
+
+mat-card-header { padding: 1.5rem 1.5rem 1rem 1.5rem !important; }
+mat-card-title { color: #111111 !important; font-size: 1.35rem !important; font-weight: 700 !important; }
+mat-card-subtitle { color: #666666 !important; font-size: 0.9rem !important; }
+mat-card-content { padding: 0 1.5rem 1rem 1.5rem !important; flex-grow: 1; }
+
+img[mat-card-image] {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 0 1.25rem 0 !important;
+  border: 1px solid #f0f0f0;
+}
+
+mat-card-content p { color: #333333; font-size: 0.95rem; line-height: 1.6; margin: 0; }
+
+mat-card-actions {
+  padding: 1rem 1.5rem 1.5rem 1.5rem !important;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  background-color: #fcfcfc;
+  border-top: 1px solid #f0f0f0;
+}
+
+button[matButton] {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+}
+
+mat-card-actions button[matButton]:nth-child(1) { background-color: #ffffff; color: #111111; border: 1px solid #111111; }
+mat-card-actions button[matButton]:nth-child(1):hover { background-color: #111111; color: #ffffff; }
+mat-card-actions button[matButton]:nth-child(2) { background-color: #2e7d32; color: #ffffff; }
+mat-card-actions button[matButton]:nth-child(2):hover { background-color: #1b5e20; }
