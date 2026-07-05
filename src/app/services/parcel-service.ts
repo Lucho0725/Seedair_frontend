@@ -29,12 +29,12 @@ export class ParcelService {
   }
 
   delete(id: number){
-    return this.http.delete<void>(this.ruta_servidor+"/"+this.recurso+"/logical_delete/"+id);
+    return this.http.delete<void>(this.ruta_servidor+"/"+this.recurso+"/logicalDelete/"+id);
   }
 
   edit(parcelDTO: ParcelDTOByCustomerId){
     
     return this.http.put<ParcelDTOByCustomerId>(this.ruta_servidor+"/"+this.recurso+"/update", parcelDTO);
-  } 
+  }
 
 }

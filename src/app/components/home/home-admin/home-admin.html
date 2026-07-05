@@ -24,14 +24,14 @@
   <mat-card class="example-card" appearance="outlined">
     <mat-card-header>    
       <mat-card-title>Drones</mat-card-title>
-      <mat-card-subtitle>Aprende mas de nuestros ultimos modelos</mat-card-subtitle>
+      <mat-card-subtitle>Apartado de Drones</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <img mat-card-image src="https://wpassets.adda247.com/wp-content/uploads/multisite/sites/5/2020/07/11133525/drone-cc0-1568x1042.jpg">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
     </mat-card-content>
     <mat-card-actions>
-      <button matButton routerLink="/drone/list-drone">Ver mas...</button>
+      <button matButton routerLink="/drone/list-drones-admin">Administrar.</button>
     </mat-card-actions>
   </mat-card>
 
@@ -47,6 +47,21 @@
     <mat-card-actions>
       <button matButton routerLink="/reservations/list-customer-reservations">Listar</button>
       <button matButton routerLink="/reservations/save-reservation">Nuevo</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>    
+      <mat-card-title>Modelos y Marcas de Drones</mat-card-title>
+      <mat-card-subtitle>Administración</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <img mat-card-image src="https://wpassets.adda247.com/wp-content/uploads/multisite/sites/5/2020/07/11133525/drone-cc0-1568x1042.jpg">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button matButton routerLink="/drone/drone-models/list-drone-models">Modelos</button>
+      <button matButton routerLink="/drone/drone-brands/list-drone-brands">Marcas</button>
     </mat-card-actions>
   </mat-card>
 

@@ -1,1 +1,64 @@
-<p>save-drone works!</p>
+<div class="seedair-form-wrapper">
+    <mat-card class="drone-card">
+        
+        <mat-card-header class="card-header">
+            <mat-card-title class="title-flex">
+                <h2 *ngIf="droneId == 0">Registrar un nuevo Dron</h2>
+                <h2 *ngIf="droneId > 0">Editar Dron</h2>
+            </mat-card-title>
+            <mat-card-subtitle>
+                Ingresa los datos físicos y de inventario del equipo.
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="saveForm" class="form-container">
+
+                <div class="coordinate-row" *ngIf="droneId > 0">
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>ID de Base de Datos</mat-label>
+                        <input matInput formControlName="id" readonly="true">
+                    </mat-form-field>
+
+                </div>
+
+                <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Código de Dron</mat-label>
+                        <input matInput formControlName="code" placeholder="Ex: DRN-1050">
+                        <mat-icon matSuffix>badge</mat-icon>
+                    </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Número de Serie</mat-label>
+                    <input matInput formControlName="serialNumber" placeholder="Ej: 1581F3TTB007X">
+                    <mat-icon matSuffix>qr_code_scanner</mat-icon>
+                    
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Fecha de Adquisición</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="acquisitionDate" placeholder="DD/MM/AAAA">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Modelo del Dron</mat-label>
+                    <mat-select formControlName="droneModelId">
+                        <mat-option *ngFor="let modelo of listaModelos" [value]="modelo.id">
+                            {{ modelo.modelName }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+            </form>
+        </mat-card-content>
+
+        <mat-card-actions class="button-row">
+            <button mat-stroked-button routerLink="/drone/list-drones-admin">Cancelar</button>
+            <button mat-flat-button color="primary" (click)="Grabar()" [disabled]="saveForm.invalid">Grabar</button>
+        </mat-card-actions>
+        
+    </mat-card>
+</div>
