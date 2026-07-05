@@ -24,6 +24,12 @@ import { MainLayout } from './components/main-layout/main-layout';
 import { RouterModule } from '@angular/router';
 import { ListDrone } from './components/drone/list-drone/list-drone';
 import { SaveDrone } from './components/drone/save-drone/save-drone';
+import { ListDronesAdmin } from './components/drone/list-drones-admin/list-drones-admin';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { SaveDroneModel } from './components/drone/drone-models/save-drone-model/save-drone-model';
+import { ListDroneModels } from './components/drone/drone-models/list-drone-models/list-drone-models';
+import { ListDroneBrands } from './components/drone/drone-brands/list-drone-brands/list-drone-brands';
+import { SaveDroneBrand } from './components/drone/drone-brands/save-drone-brand/save-drone-brand';
 
 
 @NgModule({
@@ -43,6 +49,11 @@ import { SaveDrone } from './components/drone/save-drone/save-drone';
     SaveDrone,
     HomeAdmin,
     HomeCustomer,
+    ListDronesAdmin,
+    ListDroneModels,
+    SaveDroneModel,
+    ListDroneBrands,
+    SaveDroneBrand
   ],
   imports: [
     BrowserModule,
@@ -52,6 +63,8 @@ import { SaveDrone } from './components/drone/save-drone/save-drone';
     MatToolbarModule,
     HttpClientModule,
     RouterModule,
+    MatButtonToggleModule,
+    
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
