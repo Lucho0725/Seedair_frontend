@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DroneAvailableDTO } from '../models/droneAvailableDTO';
+import { DroneDTOUpdate } from '../models/droneDTOUpdate';
+import { DroneDTOList } from '../models/droneDTOList';
+import { DroneDTO } from '../models/droneDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +16,30 @@ export class DroneService {
   constructor(private http: HttpClient){}
 
   
-  listActive() {
+  listAvailable() {
     
     return this.http.get<DroneAvailableDTO[]>(this.ruta_servidor + "/" + this.recurso + "/available");
   }
+  //listo
+  listByIsActive(isActive: boolean) { 
+    return this.http.get<DroneDTOList[]>(this.ruta_servidor + "/" + this.recurso + "/isActive/" + isActive);
+  }
+  getDroneById(droneId: number) { 
+    return this.http.get<DroneDTO>(this.ruta_servidor + "/" + this.recurso + "/" + droneId);
+  }
 
+  add(droneDTO: DroneDTO){
+    return this.http.post<DroneDTO>(this.ruta_servidor+"/"+this.recurso +"/add" , droneDTO);
+  }
+  //listo
+  delete(id: number){
+    return this.http.delete<void>(this.ruta_servidor+"/"+this.recurso+"/logicalDelete/"+id);
+  }
+  //listo
+  edit(droneDTO: DroneDTOUpdate){
+      
+    return this.http.put<DroneDTOUpdate>(this.ruta_servidor+"/"+this.recurso+"/update", droneDTO);
+  }
+
+  
 }

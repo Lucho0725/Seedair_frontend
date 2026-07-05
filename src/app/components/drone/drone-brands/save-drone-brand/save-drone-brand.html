@@ -1,0 +1,38 @@
+<div class="seedair-form-wrapper">
+    <mat-card class="drone-card">
+        
+        <mat-card-header class="card-header">
+            <mat-card-title class="title-flex">
+                <h2 *ngIf="id == 0">Registrar una nueva Marca</h2>
+                <h2 *ngIf="id > 0">Editar Marca</h2>
+            </mat-card-title>
+            <mat-card-subtitle>
+                Ingresa el nombre del fabricante para añadirlo al catálogo.
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="saveForm" class="form-container">
+
+                <div class="coordinate-row" *ngIf="id > 0">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>ID</mat-label>
+                        <input matInput formControlName="id" readonly="true">
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Nombre de Marca</mat-label>
+                    <input matInput formControlName="name" placeholder="Ej: DJI, Autel, Parrot...">
+                </mat-form-field>
+                
+            </form>
+        </mat-card-content>
+
+        <mat-card-actions class="button-row">
+            <button mat-stroked-button routerLink="/drone/drone-brands/list-drone-brands">Cancelar</button>
+            <button mat-flat-button color="primary" (click)="Grabar()" [disabled]="saveForm.invalid">Grabar</button>
+        </mat-card-actions>
+        
+    </mat-card>
+</div>

@@ -60,7 +60,7 @@ export class SaveReservation{
           this.operadoresDisponibles = data;
         });
         
-        this.droneService.listActive().subscribe(data => {
+        this.droneService.listAvailable().subscribe(data => {
           this.dronesDisponibles = data;
         });
       }
