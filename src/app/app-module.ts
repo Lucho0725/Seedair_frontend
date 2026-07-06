@@ -24,7 +24,8 @@ import { MainLayout } from './components/main-layout/main-layout';
 import { RouterModule } from '@angular/router';
 import { ListDrone } from './components/drone/list-drone/list-drone';
 import { SaveDrone } from './components/drone/save-drone/save-drone';
-
+import { SaveOperator } from './components/operators/save-operator/save-operator';
+import { ListOperators } from './components/operators/list-operators/list-operators';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,8 @@ import { SaveDrone } from './components/drone/save-drone/save-drone';
     SaveDrone,
     HomeAdmin,
     HomeCustomer,
+    SaveOperator,
+    ListOperators,
   ],
   imports: [
     BrowserModule,
