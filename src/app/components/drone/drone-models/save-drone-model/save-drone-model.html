@@ -1,0 +1,74 @@
+<div class="seedair-form-wrapper">
+    <mat-card class="drone-card">
+        
+        <mat-card-header class="card-header">
+            <mat-card-title class="title-flex">
+                <h2 *ngIf="modeloId == 0">Registrar un nuevo Modelo</h2>
+                <h2 *ngIf="modeloId > 0">Editar Modelo</h2>
+            </mat-card-title>
+            <mat-card-subtitle>
+                Ingresa las especificaciones técnicas para el catálogo.
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form [formGroup]="saveForm" class="form-container">
+
+                <div class="coordinate-row" *ngIf="modeloId > 0">
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>ID de Base de Datos</mat-label>
+                        <input matInput formControlName="id" readonly="true">
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Marca del Dron</mat-label>
+                    <mat-select formControlName="droneBrandId">
+                        <mat-option *ngFor="let marca of listaMarcas" [value]="marca.id">
+                            {{ marca.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Nombre del Modelo</mat-label>
+                    <input matInput formControlName="modelName" placeholder="Ej: Agras T40">
+                </mat-form-field>
+
+                
+
+                <div class="coordinate-row">
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>Capacidad de Semillas (Kg)</mat-label>
+                        <input matInput type="number" formControlName="seedCapacityKg" placeholder="Ej: 40">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>Cobertura (Ha/día)</mat-label>
+                        <input matInput type="number" formControlName="coverageHectaresPerDay" placeholder="Ej: 15.5">
+                    </mat-form-field>
+                </div>
+
+                <div class="coordinate-row">
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>Autonomía (Minutos)</mat-label>
+                        <input matInput type="number" formControlName="autonomyMinutes" placeholder="Ej: 25">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="half-width">
+                        <mat-label>Velocidad Máxima (Km/h)</mat-label>
+                        <input matInput type="number" formControlName="maxSpeedKmh" placeholder="Ej: 36">
+                    </mat-form-field>
+                </div>
+                
+            </form>
+        </mat-card-content>
+
+        <mat-card-actions class="button-row">
+            <button mat-stroked-button routerLink="/drone/drone-models/list-drone-models">Cancelar</button>
+            <button mat-flat-button color="primary" (click)="Grabar()" [disabled]="saveForm.invalid">Grabar</button>
+        </mat-card-actions>
+        
+    </mat-card>
+    
+</div>

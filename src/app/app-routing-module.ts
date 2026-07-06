@@ -10,14 +10,25 @@ import { ListCustomerReservations } from './components/reservations/list-custome
 import { RegisterCustomerForm } from './components/register-customer-form/register-customer-form';
 import { MainLayout } from './components/main-layout/main-layout';
 import { ListDrone } from './components/drone/list-drone/list-drone';
+<<<<<<< HEAD
 import { SaveOperator } from './components/operators/save-operator/save-operator';
 import { ListOperators } from './components/operators/list-operators/list-operators';
 import { grabarGuard } from './components/guards/grabar-guard';
+=======
+import { ListDronesAdmin } from './components/drone/list-drones-admin/list-drones-admin';
+import { SaveDrone } from './components/drone/save-drone/save-drone';
+import { ListDroneModels } from './components/drone/drone-models/list-drone-models/list-drone-models';
+import { SaveDroneModel } from './components/drone/drone-models/save-drone-model/save-drone-model';
+import { ListDroneBrands } from './components/drone/drone-brands/list-drone-brands/list-drone-brands';
+import { SaveDroneBrand } from './components/drone/drone-brands/save-drone-brand/save-drone-brand';
+
+>>>>>>> 01a94279cbeb7ee2abd28d6fd67e26f34196d89d
 const routes: Routes = [
   
   {path:"", component:Login},
   {path:"login", component:Login},
-  {path:"register-customer-form", component: RegisterCustomerForm},  
+  {path:"register-customer-form", component: RegisterCustomerForm},
+  
     
   {
     path: "",
@@ -32,9 +43,22 @@ const routes: Routes = [
       {path:"reservations/list-customer-reservations", component: ListCustomerReservations, canActivate:[consultarGuard]},
       {path:"reservations/save-reservation", component: SaveReservation, canActivate:[consultarGuard]}, 
       {path:"drone/list-drone", component: ListDrone, canActivate:[consultarGuard]},
+<<<<<<< HEAD
       {path:"operators/list-operators", component: ListOperators, canActivate:[consultarGuard]},
       {path:"operators/save-operator", component: SaveOperator, canActivate:[grabarGuard]},
       {path:"operators/edit-operator/:id", component: SaveOperator, canActivate:[grabarGuard]},
+=======
+      {path:"drone/list-drones-admin", component: ListDronesAdmin, canActivate:[consultarGuard]},
+      {path:"drone/save-drone", component: SaveDrone, canActivate:[consultarGuard]},  
+      {path:"drone/save-drone/:id", component: SaveDrone, canActivate:[consultarGuard]},  
+      {path:"drone/drone-models/list-drone-models", component: ListDroneModels, canActivate:[consultarGuard]},   
+      {path:"drone/drone-models/save-drone-model", component: SaveDroneModel, canActivate:[consultarGuard]},     
+      {path:"drone/drone-models/save-drone-model/:id", component: SaveDroneModel, canActivate:[consultarGuard]},
+      {path:"drone/drone-brands/list-drone-brands", component: ListDroneBrands, canActivate:[consultarGuard]},   
+      {path:"drone/drone-brands/save-drone-brand", component: SaveDroneBrand, canActivate:[consultarGuard]},     
+      {path:"drone/drone-brands/save-drone-brand/:id", component: SaveDroneBrand, canActivate:[consultarGuard]}
+
+>>>>>>> 01a94279cbeb7ee2abd28d6fd67e26f34196d89d
     ]
   },
   
