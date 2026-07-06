@@ -24,10 +24,8 @@ import { MainLayout } from './components/main-layout/main-layout';
 import { RouterModule } from '@angular/router';
 import { ListDrone } from './components/drone/list-drone/list-drone';
 import { SaveDrone } from './components/drone/save-drone/save-drone';
-<<<<<<< HEAD
 import { SaveOperator } from './components/operators/save-operator/save-operator';
 import { ListOperators } from './components/operators/list-operators/list-operators';
-=======
 import { ListDronesAdmin } from './components/drone/list-drones-admin/list-drones-admin';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SaveDroneModel } from './components/drone/drone-models/save-drone-model/save-drone-model';
@@ -35,7 +33,6 @@ import { ListDroneModels } from './components/drone/drone-models/list-drone-mode
 import { ListDroneBrands } from './components/drone/drone-brands/list-drone-brands/list-drone-brands';
 import { SaveDroneBrand } from './components/drone/drone-brands/save-drone-brand/save-drone-brand';
 
->>>>>>> 01a94279cbeb7ee2abd28d6fd67e26f34196d89d
 
 @NgModule({
   declarations: [
@@ -54,16 +51,13 @@ import { SaveDroneBrand } from './components/drone/drone-brands/save-drone-brand
     SaveDrone,
     HomeAdmin,
     HomeCustomer,
-<<<<<<< HEAD
     SaveOperator,
     ListOperators,
-=======
     ListDronesAdmin,
     ListDroneModels,
     SaveDroneModel,
     ListDroneBrands,
     SaveDroneBrand
->>>>>>> 01a94279cbeb7ee2abd28d6fd67e26f34196d89d
   ],
   imports: [
     BrowserModule,
