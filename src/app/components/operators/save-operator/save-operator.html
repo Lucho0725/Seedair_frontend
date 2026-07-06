@@ -1,0 +1,84 @@
+<div class="form-operator">
+    <div class="container-title">
+        <h2>¡Incorpore un nuevo operador al equipo SeedAir!</h2>
+        <div class="subtitle">Completa la información personal y las credenciales de vuelo del piloto.</div>
+    </div>
+    <mat-card class="form-card mat-elevation-z24>">
+        <mat-card-content>
+            <form [formGroup]="operatorForm" (ngSubmit)="guardarOperador()">
+            
+            <div class="row-fields">
+              <mat-form-field class = "half-width">
+                  <mat-label>Nombres</mat-label>
+                  <input matInput formControlName="name">
+                  <mat-error *ngIf="operatorForm.get('name')?.hasError('required')">
+                    Los nombres son obligatorios
+                  </mat-error>
+              </mat-form-field>
+                
+                <mat-form-field class = "half-width">
+                  <mat-label>Apellidos</mat-label>
+                  <input matInput formControlName="lastname">
+                  <mat-error *ngIf="operatorForm.get('lastname')?.hasError('required')">
+                    Los apellidos son obligatorios
+                  </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row-fields">
+              <mat-form-field class = "half-width">
+                <mat-label>Código de Licencia</mat-label>
+                <input matInput formControlName="licenseCode">
+                <mat-error *ngIf="operatorForm.get('licenseCode')?.hasError('required')">
+                    El código de licencia es obligatorio
+                </mat-error>
+              </mat-form-field>
+              
+              <mat-form-field class = "half-width">
+                <mat-label>Experiencia</mat-label>
+                <input matInput type="number" formControlName="experienceYears">
+                <mat-error *ngIf="operatorForm.get('experienceYears')?.hasError('required')">
+                    Los años de experiencia son obligatorios
+                </mat-error>
+              </mat-form-field>
+            </div>  
+              
+            <mat-form-field class = "half-width">
+              <mat-label>Nivel de certificacion</mat-label>
+              <mat-select formControlName="certificationLevel">
+              <mat-option value="JUNIOR">Operador Junior</mat-option>
+              <mat-option value="SEMI_SENIOR">Operador Semi-Senior</mat-option>
+              <mat-option value="SENIOR">Operador Senior</mat-option>
+              </mat-select>
+              <mat-error *ngIf="operatorForm.get('certificationLevel')?.hasError('required')">
+                El nivel de certificacion es obligatorio
+              </mat-error>
+            </mat-form-field>
+            
+            <div class="row-fields" *ngIf="this.operatorId>0">
+              <mat-slide-toggle color="primary" formControlName="availabilityStatus">
+              {{ operatorForm.get('availabilityStatus')?.value ? 'Operador Disponible' : 'Operador Ocupado' }}
+              </mat-slide-toggle>
+              <mat-slide-toggle color="primary" formControlName="isActive">
+              {{ operatorForm.get('isActive')?.value ? 'Operador Activo' : 'Operador Inactivo' }}
+              </mat-slide-toggle>
+            </div>
+
+            <div class="actions-row">
+                  <button mat-stroked-button *ngIf="this.operatorId==0" color="warn" type="button" routerLink="/home">
+                      Cancelar
+                  </button>
+                  <button mat-stroked-button *ngIf="this.operatorId>0" color="warn" type="button" routerLink="/operators/list-operators">
+                      Cancelar
+                  </button>
+                  <button mat-flat-button *ngIf="this.operatorId==0" color="primary" type="submit" [disabled]="operatorForm.invalid">
+                      Agregar Operador
+                  </button>
+                  <button mat-flat-button *ngIf="this.operatorId>0" color="primary" type="submit" [disabled]="operatorForm.pristine">
+                      Guardar cambios
+                  </button>
+            </div>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
