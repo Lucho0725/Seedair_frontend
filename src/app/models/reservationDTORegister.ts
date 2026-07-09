@@ -6,6 +6,5 @@ export interface ReservationDTORegister {
     
     parcelId: number,
     droneId: number
-    operatorId: number
 
 }
