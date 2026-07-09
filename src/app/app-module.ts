@@ -24,6 +24,8 @@ import { MainLayout } from './components/main-layout/main-layout';
 import { RouterModule } from '@angular/router';
 import { ListDrone } from './components/drone/list-drone/list-drone';
 import { SaveDrone } from './components/drone/save-drone/save-drone';
+import { SaveOperator } from './components/operators/save-operator/save-operator';
+import { ListOperators } from './components/operators/list-operators/list-operators';
 import { ListDronesAdmin } from './components/drone/list-drones-admin/list-drones-admin';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SaveDroneModel } from './components/drone/drone-models/save-drone-model/save-drone-model';
@@ -49,6 +51,8 @@ import { SaveDroneBrand } from './components/drone/drone-brands/save-drone-brand
     SaveDrone,
     HomeAdmin,
     HomeCustomer,
+    SaveOperator,
+    ListOperators,
     ListDronesAdmin,
     ListDroneModels,
     SaveDroneModel,
