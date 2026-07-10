@@ -1,10 +1,12 @@
-import { Component } from '@angular/core'; 
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ParcelDTOByCustomerId } from '../../../models/parcelDTOByCustomerId';
 import { Parcel } from '../../../models/parcel';
 import { ParcelService } from '../../../services/parcel-service';
+import { UserService } from '../../../services/user-service';
 
 
 @Component({
@@ -15,7 +17,7 @@ import { ParcelService } from '../../../services/parcel-service';
 })
 export class SaveParcel{
   
-  parcelId: number = 0; 
+  parcelId: number = 0;
   saveForm!: FormGroup;
   createdAtOriginal: string = '';
 
@@ -24,16 +26,30 @@ export class SaveParcel{
     private snackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private location: Location,
+    private userService: UserService
   ) {}
+
+  esAdmin(): boolean {
+    const authorities = this.userService.getAuthoritiesLogeado();
+    return !!authorities && authorities.indexOf("ADMIN") >= 0;
+  }
+
+  Cancelar() {
+    this.location.back();
+  }
 
   ngOnInit() {
     this.saveForm = this.formBuilder.group({
       id: [""],
       locationText: ["", [Validators.required, Validators.minLength(4)]],
       totalHectares: ["", [Validators.required, Validators.min(0.1)]], 
-      latitude: ["", [Validators.required, Validators.min(-90), Validators.max(90)]], 
-      longitude: ["", [Validators.required, Validators.min(-180), Validators.max(180)]] 
+      latitude: ["", [Validators.required, Validators.min(-90), Validators.max(90)]],
+      longitude: ["", [Validators.required, Validators.min(-180), Validators.max(180)]],
+      latitude2: ["", [Validators.required, Validators.min(-90), Validators.max(90)]],
+      longitude2: ["", [Validators.required, Validators.min(-180), Validators.max(180)]],
+      isActive: [true]
     });
 
     const paramId = this.activatedRoute.snapshot.params["id"];
@@ -52,7 +68,10 @@ export class SaveParcel{
             locationText: data.locationText,
             totalHectares: data.totalHectares,
             latitude: data.latitude,
-            longitude: data.longitude
+            longitude: data.longitude,
+            latitude2: data.latitude2,
+            longitude2: data.longitude2,
+            isActive: data.isActive
           });
         },
         error: (err) => {
@@ -73,14 +92,16 @@ export class SaveParcel{
           totalHectares: Number(this.saveForm.get("totalHectares")?.value),
           latitude: Number(this.saveForm.get("latitude")?.value),
           longitude: Number(this.saveForm.get("longitude")?.value),
+          latitude2: Number(this.saveForm.get("latitude2")?.value),
+          longitude2: Number(this.saveForm.get("longitude2")?.value),
           createdAt: this.createdAtOriginal,
-          isActive:true
-          
+          isActive: this.saveForm.get("isActive")?.value
+
         };
 
         this.parcelService.edit(parcelToUpdate).subscribe({
           next: () => {
-            this.router.navigate(["/parcels/list-parcels"]);
+            this.location.back();
             this.snackBar.open("Se actualizó la Parcela correctamente", "", { duration: 2000 });
           },
           error: (err) => {
@@ -95,7 +116,9 @@ export class SaveParcel{
           locationText: this.saveForm.get("locationText")?.value,
           totalHectares: Number(this.saveForm.get("totalHectares")?.value),
           latitude: Number(this.saveForm.get("latitude")?.value),
-          longitude: Number(this.saveForm.get("longitude")?.value)
+          longitude: Number(this.saveForm.get("longitude")?.value),
+          latitude2: Number(this.saveForm.get("latitude2")?.value),
+          longitude2: Number(this.saveForm.get("longitude2")?.value)
         };
 
         this.parcelService.add(newParcel).subscribe({
