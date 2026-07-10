@@ -22,9 +22,17 @@
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Celular</mat-label>
-        <input matInput formControlName="phone" placeholder="Ej. 987654321">
+        
+        <input matInput type="tel" formControlName="phone" placeholder="Ej. 987654321">
         <mat-icon matSuffix>phone</mat-icon>
-        <mat-error *ngIf="registerForm.get('phone')?.hasError('required')">Requerido</mat-error>
+        
+        <mat-error *ngIf="registerForm.get('phone')?.hasError('required')">
+          Requerido
+        </mat-error>  
+        
+        <mat-error *ngIf="registerForm.get('phone')?.hasError('minlength') || registerForm.get('phone')?.hasError('maxlength')">
+          Ingresar un número válido
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
