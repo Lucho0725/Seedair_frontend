@@ -9,6 +9,7 @@ import { Home } from './components/home/home';
 import { Cabecera } from './components/cabecera/cabecera';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ListParcels } from './components/parcels/list-parcels/list-parcels';
+import { ListParcelsAdmin } from './components/parcels/list-parcels-admin/list-parcels-admin';
 import { SaveParcel } from './components/parcels/save-parcel/save-parcel';
 import { ConfirmacionEliminar } from './components/confirmaciones/confirmacion-eliminar/confirmacion-eliminar';
 import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -42,6 +43,7 @@ import { SaveDroneBrand } from './components/drone/drone-brands/save-drone-brand
     Cabecera,
     ConfirmacionEliminar,
     ListParcels,
+    ListParcelsAdmin,
     SaveParcel,
     ListCustomerReservations,
     SaveReservation,

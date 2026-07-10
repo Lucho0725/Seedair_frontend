@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ParcelDTOByCustomerId } from '../models/parcelDTOByCustomerId';
 import { Parcel } from '../models/parcel';
+import { ParcelResponseDTO } from '../models/parcelResponseDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,9 @@ export class ParcelService {
   }
   listParcelsByCustomer(){
     return this.http.get<ParcelDTOByCustomerId[]>(this.ruta_servidor+"/"+this.recurso+"/list"+"/customerParcels");
+  }
+  getParcels(){
+    return this.http.get<ParcelResponseDTO[]>(this.ruta_servidor+"/"+this.recurso);
   }
 
   getById(parcelId: number){    

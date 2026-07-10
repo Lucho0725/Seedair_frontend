@@ -44,6 +44,13 @@
     width: 100%;
 }
 
+.coordinate-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #37474f;
+    margin: 0.5rem 0 0 0;
+}
+
 .coordinate-row {
     display: flex;
     gap: 1rem;
@@ -52,8 +59,14 @@
 }
 
 .half-width {
-    flex: 1 1 0; 
+    flex: 1 1 0;
     width: 100%;
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
 }
 
 .button-row {
