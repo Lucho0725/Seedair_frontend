@@ -3,6 +3,6 @@ export interface DroneDTO {
     serialNumber: string;
     acquisitionDate: string; 
     droneModelId: number;
-
+    modelName?: string; 
     
 }

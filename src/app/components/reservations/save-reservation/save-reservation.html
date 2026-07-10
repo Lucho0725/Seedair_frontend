@@ -49,7 +49,7 @@
                         <mat-label>Dron</mat-label>
                         <mat-select formControlName="droneId" [disabled]="dronesFiltrados.length === 0">
                             <mat-option *ngFor="let drone of dronesFiltrados" [value]="drone.code">
-                                Dron S/N: {{ drone.serialNumber }} (Mod. ID: {{ drone.droneModelId }})
+                                       {{ drone.modelName }}
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="reservationForm.get('droneId')?.hasError('required')">
