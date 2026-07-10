@@ -50,4 +50,11 @@ export class UserService {
     return localStorage.getItem("jwtToken");
     }
 
+    /*getUserNameById(userId: number) {
+      return this.http.get(this.ruta_servidor + "/" + this.recurso + "/userName/" +  userId, { responseType: 'text' });
+    }*/
+
+
+
+   
 }

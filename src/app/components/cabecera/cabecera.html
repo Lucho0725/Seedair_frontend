@@ -5,11 +5,27 @@
   </div>
 
   <div class="header-nav">
-    <a routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
-    <a routerLink="/services" routerLinkActive="active-link">Servicios</a>
-    <a routerLink="/how-it-works" routerLinkActive="active-link">Cómo funciona</a>
-    <a routerLink="/about-us" routerLinkActive="active-link">Nosotros</a>
-    <a routerLink="/menu" routerLinkActive="active-link">Menú</a>
+    
+    <ng-container *ngIf="isAdmin">
+      <a routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+      <a routerLink="/drone/list-drones-admin" routerLinkActive="active-link">Drones</a>
+      <a routerLink="/operators/list-operators" routerLinkActive="active-link">Operadores</a>
+    </ng-container>
+
+    <ng-container *ngIf="isLoggedIn && !isAdmin">
+      <a routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+      <a routerLink="/parcels/list-parcels" routerLinkActive="active-link">Mis Parcelas</a>
+      <a routerLink="/drone/list-drone" routerLinkActive="active-link">Catálogo de Drones</a>
+      <a routerLink="/reservations/list-customer-reservations" routerLinkActive="active-link">Mis Reservas</a>
+    </ng-container>
+
+    <ng-container *ngIf="!isLoggedIn">
+      <a routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+      <a routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Servicios</a>
+      <a routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Cómo funciona</a>
+      <a routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Nosotros</a>
+    </ng-container>
+
   </div>
 
   <span class="example-spacer"></span>
@@ -20,10 +36,11 @@
       Login
     </a>
     
-    <a *ngIf="isLoggedIn" routerLink="/profile" class="btn-user-icon" title="Mi Perfil">
-      <mat-icon>account_circle</mat-icon> </a>
+    <a *ngIf="isLoggedIn" routerLink="" class="btn-user-icon" title="Mi Perfil">
+      <mat-icon>account_circle</mat-icon> 
+    </a>
     
-    <button class="btn-request" routerLink="/services/request">
+    <button *ngIf="!isAdmin" class="btn-request" routerLink="/reservations/save-reservation">
       Solicitar servicio
     </button>
     
