@@ -51,6 +51,7 @@ export class Login {
       },      
       error:(err)=>{
         console.log(err);
+        this.snackBar.open("Usuario o contraseña incorrecto, verifique sus credenciales.","",{duration: 4000});
       }
     })
   }

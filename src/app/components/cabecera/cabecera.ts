@@ -8,29 +8,38 @@ import { Router } from '@angular/router';
   templateUrl: './cabecera.html',
   styleUrl: './cabecera.css',
 })
-export class Cabecera implements OnInit {
+export class Cabecera{
 
-  // Variable para controlar la vista en el HTML
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
+  isCustomer: boolean = false;
 
   constructor (private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
-    // Obtenemos el token usando el método que ya tienes en tu servicio
     const token = this.userService.getJwtTokenLogeado();
     
-    // Si el token existe (no es null ni está vacío), isLoggedIn será true.
-    // De lo contrario, será false.
     if (token) {
       this.isLoggedIn = true;
+      
+      const roles = this.userService.getAuthoritiesLogeado(); 
+      
+      //Paraa valida las credenciales con condcional
+      this.isAdmin = roles?.includes('ADMIN') || false;
+      this.isCustomer = roles?.includes('CUSTOMER') || false;
+      
     } else {
       this.isLoggedIn = false;
+      this.isAdmin = false;
+      this.isCustomer = false;
     }
   }
 
   Logout() {
     this.userService.logout();
-    this.isLoggedIn = false; // Actualizamos la variable para que el HTML reaccione
+    this.isLoggedIn = false; 
+    this.isAdmin = false;
+    this.isCustomer = false;
     this.router.navigate(["/login"]);
   }
 }
